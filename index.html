@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <title></title>
+   <link rel="apple-touch-icon" href="/make-ducklib.png">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   <meta name="apple-mobile-web-app-title" content="Duck-Libs">
+   <link rel="stylesheet" type="text/css" href="font/stylesheet.css">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+
+   <div id="madlibs">
+      <h1 id="question" class = "startText">Duck-Libs</h1>
+      <input type="text" name="answer" id="answer" class="hide promptTextbox" autofocus>
+      <h2 id="hint" class="hint-example hide"></h2>
+      <h2 id="startBlurb"><p>Ducks come in handy when fixing bugs in code, but what about the bugs experienced in life?</p><p></p><p>Enter your thoughts in this duck-lib so we as the CSE community can debug life's challenges together</p></h2>
+      <button onclick="stepAnswer()" id="startButton" class="button">LET'S GO!</button>
+      <div id="continueButtons" class="multipleButtonsContainer hide">
+        <button onclick="location.reload()" class="multipleButtons" id="startOverButton">START OVER</button>
+        <button onclick="stepAnswer()" id="step" class="multipleButtons" disabled="disabled">NEXT</button>
+      </div>
+      <!-- <button onclick="stepAnswer()" id="step" class="button">LET'S GO!</button> -->
+      <div><p id="progressBar" class="hide">1/6</p></div>
+   </div>
+
+  
+  <!-- put id inside image or else style won't apply -->
+  <div class="circuitDuck hide"><img id="firstCircuitDuck" src="images/accomplishment_duck.png"></div>
+  <div class="circuitDuck hide"><img id="secondCircuitDuck" src="images/failure_duck.png"></div>
+  <div class="circuitDuck hide"><img id="thirdCircuitDuck" src="images/workon_duck.png"></div>
+  <div class="circuitDuck hide"><img id="fourthCircuitDuck" src="images/activity_duck.png"></div>
+  <div class="circuitDuck hide"><img id="fifthCircuitDuck" src="images/grateful_duck.png"></div>
+  <div class="circuitDuck hide"><img id="sixthCircuitDuck" src="images/failure_duck.png"></div>
+  <div class="circuitDuck hide"><img id="viewCircuitDuck" src="images/activity_duck.png"></div>
+  <div class="circuitDuck hide"><img id="shareCircuitDuck1" src="images/friend_ducks.png">
+    <img id="shareCircuitDuck2" src="images/friend_ducks-46.png"></div>
+
+  <div id="print" class="hide prompting-position">
+    <h1 id="viewStory">Your Duck-Lib is ready!<br/><br/>Print your story and take it from below!</h1>
+    <button onclick="printMadlib()" id="view" class="button">PRINT!</button>
+  </div>
+
+  <div id="share" class="hide prompting-position">
+    <h1 class="promptText" style="font-size: 30px; line-height: 1.4; margin-bottom: 50px;">Would you like to share some advice or encouragement with the CSE Community?<br/><br/>You'll receive a receipt to write on and pin-up on the yellow board!</h1>
+    <div id="shareButtons" class="multipleButtonsContainer">
+      <button id ="printSharing" class="multipleButtons" onclick="displayThanks()">No thanks</button>
+      <button id="noPrintSharing" class="multipleButtons" onclick="printSharedMadlib()">Sure!</button>
+    </div>
+  </div>
+
+  <div id="sharedMadlibContainer" class="hide">
+    <div id="printHeader2" class="printingHeader">
+      <img src="images/newduck_header-04.png" style="width: 130%; margin-left: -15%;">
+    </div>
+    <div>
+        <p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><p>.</p>
+        </p>
+      </div>
+    
+<!--       <div id="printHeader2" class="printingHeader">
+        <img src="images/duck_blackversion-51.png" width="45" height="40"> 
+        <h2> Duck-Libs </h2>
+      </div>
+      <div>
+        <p class="madlibText" style="line-height: 1;"><i>Fill out with a <b>friend!</b></i><br/>
+          An Ode to CSE Boundlessness:</p>
+        <p class="madlibText" style="line-height: 1.75;">
+          The year was <span class="mabLibUnderline">       </span> (the year you started UW). As a <span class="mabLibUnderline">                </span> (adj) new student, the air was full of optimism and boundlessness.
+          <br/><br/>
+          But then, <span class="mabLibUnderline">            </span> (hard CSE class you’ve taken) arrived and things took a turn. <span class="mabLibUnderline">                      </span> (Professor of above class) showed no mercy and <span class="mabLibUnderline">                    </span> (plural noun) were shed.
+          <br/><br/>
+          Just when it seemed like all <span class="mabLibUnderline">              </span> (noun) was lost, <span class="mabLibUnderline">            </span> (CS person who’s helped you) came along. After<span class="mabLibUnderline">      </span> (number) hours in the lab and several snackoverflow trips later, boundlessness was restored.
+          <br/><br/>
+          Of course, there will be future struggles and successes, but the <span class="mabLibUnderline">             </span> (community you’re a part of) community has your back. You don’t have to debug alone!
+          <br/>
+        </p>
+        <p class="madlibText" style="line-height: 1.2; font-weight: bold">Check out the DuckLib installation outside the Gates Undergrad Lab for more!</p>
+      </div>
+ -->    </div>
+
+  <div id="thanks" class="hide">
+    <p id="thanksMessage">thanks for quacking your code!</p>
+  </div>
+
+
+   <div id="result">
+    <div id="fullMadlibContainer">
+        <div id="printHeader" class="printingHeader hide">
+          <img src="images/printheading.png" style="width: 90%">
+        </div>
+    </div>  
+      <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net"
+  action="https://script.google.com/a/uw.edu/macros/s/AKfycbwtGG9FVCt39vDPeGQggqZ7Onii9GajiHgSx1Hpwg/exec">
+
+
+        <div id="fullMadlib" class="hide">
+            <input class="madlib" name="name a past accomplishment" value=""/>
+            <input class="madlib" name="name a past failure" value=""/>
+            <input class="madlib" name="name something you want to work on" value=""/>
+            <input class="madlib" name="name an activity that you enjoy" value=""/>
+            <input class="madlib" name="name something or someone who makes you happy" value=""/>
+            <input class="madlib" name="name a community you're a part of" value=""/>
+       </div>
+       <div id="submitContainer" class="hide prompting-position">
+          <h1 id="endBlub" class="promptText">Can we anonymously share some of your responses on the community wall?  </h1>
+          <div id="buttons" class="multipleButtonsContainer">
+            <div class="start-over multipleButtons" style="line-height: 59px; font-family: Arial;" onclick="showPrintScreen()">No thanks</div>
+            <button id ="submitButton" class="multipleButtons" onclick="showPrintScreen()">Sure!</button>
+          </div>
+        </div>
+        <div style="display:none" class="thankyou_message">
+          <!-- You can customize the thankyou message by editing the code below -->
+          <h2></h2>
+        </div>
+      </form>
+
+   </div>
+
+  <!-- Submit the Form to Google Using "AJAX" -->
+  <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
+
+
+
+<!-- block = show
+none = hide
+
+1) #madlibs -> block, #results -> none [SHOW MADLIBS, HIDE RESULTS]
+2) #madlibs -> none, #results -> block [SHOW RESULTS, HIDE MADLIBS] -->
+</body>
+</html>
