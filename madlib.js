@@ -5,7 +5,7 @@ window.onload = function () {
 
 window.addEventListener('DOMContentLoaded', init)
 
-
+// google sheets link where all the answers are stored
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/10jQBC-TByII_Unur4eZy3YakFLIREGfvEcMLdWtNtb8/edit?usp=sharing';
 
 var madlib = ["Remember <>? ",
